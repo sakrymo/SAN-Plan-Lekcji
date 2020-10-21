@@ -120,8 +120,9 @@ body {
 }
 
 .logo {
-  background: magenta;
-  background-image: url('img/logo.png'), center center/contain;
+  /* background: magenta; */
+  background: url("img/logo.png") no-repeat center center/contain;
+  background-size: 80%;
   grid-area: logo;
 }
 
