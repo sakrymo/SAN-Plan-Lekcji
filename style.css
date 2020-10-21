@@ -47,6 +47,11 @@ body {
   height: 2000px
 }
 
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
 .loader {
   background: white;
   width: 100%;
@@ -263,6 +268,38 @@ span.white {
   z-index: 2;
   display: inline-block;
   box-shadow: inset -1px 0px 0px 0px var(--darkblue), inset 1px 0px 0px 0px var(--darkblue);
+}
+
+.lesson {
+  position: relative;
+  color: #004087;
+}
+
+.subject {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  font-family: droid-serif, serif;
+  font-size: 1.6rem;
+  font-weight: bolder;
+}
+
+.subject:hover {
+  color: var(--red);
+  cursor: pointer;
+}
+
+.teacher {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  font-family: poppins, sans-serif;
+  font-size: 1.2rem;
+}
+
+.teacher:hover {
+  color: var(--red);
+  cursor: pointer;
 }
 
 .active-hour {
