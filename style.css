@@ -169,6 +169,20 @@ body {
   align-items: center;
   font-family: droid-serif, serif;
   font-weight: bold;
+  font-size: 2rem;
+}
+
+.hour-number {
+  font-family: droid-serif, serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+
+.hour-time {
+  font-family: poppins, sans-serif;
+  font-size: 1.6rem;
+  font-weight: 300;
 }
 
 .day:nth-child(even) {
