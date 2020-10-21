@@ -121,6 +121,7 @@ body {
 
 .logo {
   background: magenta;
+  background-image: url('img/logo.png'), center center/contain;
   grid-area: logo;
 }
 
