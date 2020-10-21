@@ -145,7 +145,7 @@ body {
 }
 
 #logo-link:hover {
-  opacity: 0.25;
+  opacity: 0.15;
 }
 .t1 {
   background: var(--blue);
