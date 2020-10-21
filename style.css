@@ -39,6 +39,10 @@ body {
   "pt . . . . . . ." ;
 }
 
+.timetable-container > * {
+  padding: 20px;
+}
+
 .timetable-header {
   background: red;
   text-align: center;
@@ -98,6 +102,14 @@ body {
 .t5 {grid-area: t5;}
 .t6 {grid-area: t6;}
 .t7 {grid-area: t7;}
+
+
+.day {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .pn {grid-area: pn;}
 .wt {grid-area: wt;}
 .sr {grid-area: sr;}
