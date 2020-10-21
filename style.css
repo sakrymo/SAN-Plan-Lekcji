@@ -87,7 +87,7 @@ body {
   position: relative;
   flex-flow: column;
   overflow: hidden;
-  border: .3rem red solid;
+  border: .3rem var(--red) solid;
   display: grid;
   grid-template-columns: 10% 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 17% 12% 1fr 1fr 1fr 1fr 1fr;
