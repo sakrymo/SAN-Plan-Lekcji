@@ -75,6 +75,7 @@ body {
   width: calc(100% - 3rem);
   height: auto;
   min-height: 800px;
+  max-width: 1300px;
   background: white;
   color: white;
   border-radius: 3rem;
