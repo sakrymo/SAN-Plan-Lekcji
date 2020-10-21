@@ -167,7 +167,15 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'dejavu_serifbold'
+  font-family: droid-serif, serif;
+  font-weight: bold;
+}
+
+.day:nth-child(even) {
+  background: var(--darkblue);
+}
+.day:nth-child(odd) {
+  background: var(--blue);
 }
 
 .pn {grid-area: pn;}
@@ -184,3 +192,4 @@ span.white {
   font-family: poppins, sans-serif;
   font-weight: 800;
 }
+
