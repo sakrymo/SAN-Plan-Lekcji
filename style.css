@@ -209,14 +209,38 @@ span.white {
 }
 
 .pn1, .pn2, .pn3, .pn4, .pn5, .pn6, .pn7 {
-  box-shadow: inset 0px -2px 0px 0px var(--darkblue);
+  box-shadow: inset 0px -1px 0px 0px var(--darkblue);
 }
 
 .sr1, .sr2, .sr3, .sr4, .sr5, .sr6, .sr7 {
-  box-shadow: inset 0px 2px var(--darkblue),
-  inset 0px -2px var(--darkblue);
+  box-shadow: inset 0px 1px var(--darkblue),
+  inset 0px -1px var(--darkblue);
 }
 
 .pt1, .pt2, .pt3, .pt4, .pt5, .pt6, .pt7 {
-  box-shadow: inset 0px 2px var(--darkblue);
+  box-shadow: inset 0px 1px var(--darkblue);
+}
+
+.pn2, .pn4, .pn6,
+.wt2, .wt4, .wt6,
+.sr2, .sr4, .sr6,
+.cz2, .cz4, .cz6,
+.pt2, .pt4, .pt6 { position: relative; }
+
+
+.pn2::after, .pn4::after, .pn6::after,
+.wt2::after, .wt4::after, .wt6::after,
+.sr2::after, .sr4::after, .sr6::after,
+.cz2::after, .cz4::after, .cz6::after,
+.pt2::after, .pt4::after, .pt6::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  z-index: 999;
+  display: inline-block;
+  box-shadow: inset -1px 0px 0px 0px var(--darkblue), inset 1px 0px 0px 0px var(--darkblue);
 }
