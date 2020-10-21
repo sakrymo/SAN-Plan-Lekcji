@@ -14,7 +14,7 @@ body {
 }
 
 .timetable-container {
-  width: calc(100% - 3rem);
+  width: 80%;
   height: auto;
   min-height: 200px;
   background: white;
