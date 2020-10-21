@@ -47,8 +47,11 @@
 
   <!-- <script src="index.js"></script> -->
   <script>
+    const loader = document.querySelector('.loader');
+
     setTimeout(() => {
-      document.querySelector('.loader').classList.add('hidden')
+      loader.classList.add('hidden')
+      loader.style.pointerEvents = 'none'
     }, 4040);
   </script>
 </body>
