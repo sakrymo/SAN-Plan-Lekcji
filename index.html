@@ -21,7 +21,9 @@
     <button>Dolor sit amet</button>
   </a>
   <a href="msteams://teams.microsoft.com/l/team/19%3afb922d119ff44a7ca9e51b0f18e083a7%40thread.tacv2/conversations?groupId=e1c7a9e5-0ef0-40ec-90cb-54c034844eef&tenantId=262dbaf1-38a1-43f9-a7da-3022da85cc5e" target="_blank">ABCDEFDGHIJ</a>
-  
+  <span class="white" id="current-date"></span>
+
+
   <div class="timetable-container">
     <div class="timetable-header"><span class="white">Grafika 1 - Grupa 2</span></div>
     
@@ -135,6 +137,8 @@
         case 4: setActiveDay(thursday)
         case 5: setActiveDay(friday)
       }
+
+      document.querySelector('#current-date').innerHTML = now.toString();
     },1)
 
     setTimeout(() => {
