@@ -11,6 +11,7 @@
 body {
   background: transparent;
   font-size: 1.6rem;
+  font-family: sans-serif;
 }
 
 .timetable-container {
@@ -21,20 +22,77 @@ body {
   border-radius: 3rem;
   margin: auto;
   position: relative;
-  display: flex;
   flex-flow: column;
   overflow: hidden;
   border: .3rem red solid;
-}
-
-.timetable-container * {
-  position: absolute;
+  display: grid;
+  grid-template-columns: 10% 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 17% 12% 1fr 1fr 1fr 1fr;
+  grid-template-areas:
+  "thead thead thead thead thead thead thead thead"
+  "logo t1 t2 t3 t4 t5 t6 t7"
+  ". . . . . . . ."
+  ". . . . . . . ."
+  ". . . . . . . ."
+  ". . . . . . . ." ;
 }
 
 .timetable-header {
-  width: 100%;
-  height: 16.2%;
   background: red;
   text-align: center;
-  position: absolute;
+  grid-area: thead;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  font-size: 2.4rem;
 }
+
+.timeslot {
+  text-align: center;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+}
+
+.logo {
+  background: magenta;
+  grid-area: logo;
+}
+
+.t1 {
+  background: green;
+}
+
+.t2 {
+  background: cyan;
+}
+
+.t3 {
+  background: orange;
+}
+
+.t4 {
+  background: blue;
+}
+
+.t5 {
+  background: rebeccapurple;
+}
+
+.t6 {
+  background: teal;
+}
+
+.t7 {
+  background: lime;
+}
+
+.t1 {grid-area: t1;}
+.t2 {grid-area: t2;}
+.t3 {grid-area: t3;}
+.t4 {grid-area: t4;}
+.t5 {grid-area: t5;}
+.t6 {grid-area: t6;}
+.t7 {grid-area: t7;}
