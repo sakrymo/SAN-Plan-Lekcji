@@ -24,11 +24,17 @@ body {
   display: flex;
   flex-flow: column;
   overflow: hidden;
+  border: .3rem red solid;
+}
+
+.timetable-container * {
+  position: absolute;
 }
 
 .timetable-header {
   width: 100%;
-  height: 17.5%;
+  height: 16.2%;
   background: red;
+  text-align: center;
   position: absolute;
 }
