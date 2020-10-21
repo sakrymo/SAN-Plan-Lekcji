@@ -76,6 +76,7 @@ body {
   height: auto;
   min-height: 800px;
   background: white;
+  color: white;
   border-radius: 3rem;
   margin: auto;
   position: relative;
@@ -88,12 +89,11 @@ body {
   grid-template-areas:
   "thead thead thead thead thead thead thead thead"
   "logo t1 t2 t3 t4 t5 t6 t7"
-  "pn . . . . . . ."
-  "wt . . . . . . ."
-  "sr . . . . . . ."
-  "cz . . . . . . ."
-  "pt . . . . . . ." ;
-  color: white;
+  "pn pn1 pn2 pn3 pn4 pn5 pn6 pn7"
+  "wt wt1 wt2 wt3 wt4 wt5 wt6 wt7"
+  "sr sr1 sr2 sr3 sr4 sr5 sr6 sr7"
+  "cz cz1 cz2 cz3 cz4 cz5 cz6 cz7"
+  "pt pt1 pt2 pt3 pt4 pt5 pt6 pt7" ;
 }
 
 .timetable-container > * {
@@ -188,8 +188,20 @@ body {
 span.white {
   background: white;
   color: var(--red);
-  padding: 1ch 2ch;
+  padding: 1ch 3ch;
   font-family: poppins, sans-serif;
   font-weight: 800;
 }
 
+.pn1, .pn2, .pn3, .pn4, .pn5, .pn6, .pn7 {
+  box-shadow: inset 0px -2px 0px 0px var(--darkblue);
+}
+
+.sr1, .sr2, .sr3, .sr4, .sr5, .sr6, .sr7 {
+  box-shadow: inset 0px 2px var(--darkblue),
+  inset 0px -2px var(--darkblue);
+}
+
+.pt1, .pt2, .pt3, .pt4, .pt5, .pt6, .pt7 {
+  box-shadow: inset 0px 2px var(--darkblue);
+}
