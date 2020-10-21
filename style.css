@@ -36,6 +36,10 @@
   --darkblue: #004087;
 }
 
+::selection {
+  background-color: transparent;
+}
+
 body {
   background: transparent;
   font-size: 1.6rem;
@@ -249,4 +253,10 @@ span.white {
   background: white;
   color: var(--red);
   border-bottom: var(--red) 3px solid;
+}
+
+.active-day {
+  background: var(--red) !important;
+  color: white;
+  border-right: var(--red) 3px solid;
 }

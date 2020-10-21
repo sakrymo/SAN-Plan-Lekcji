@@ -104,7 +104,38 @@
 
   <!-- <script src="index.js"></script> -->
   <script>
-    const loader = document.querySelector('.loader');
+    const
+    loader = document.querySelector('.loader'),
+    monday = document.querySelector('.pn'),
+    tuesday = document.querySelector('.wt'),
+    wednesday = document.querySelector('.sr'),
+    thursday = document.querySelector('.cz'),
+    friday = document.querySelector('.pt');
+
+    let setActiveDay = element => {
+      if (!element.classList.contains('active-day')) {
+        document.querySelectorAll('.day').forEach(day => day.classList.remove('active-day'))
+        element.classList.add('active-day')
+      }
+    }
+
+    setInterval(()=>{
+      now = new Date();
+      // console.log(now.getDay());
+      switch (now.getDay()) {
+        case 1:
+          setActiveDay(monday)
+          break
+        case 2:
+          setActiveDay(tuesday)
+          break
+        case 3:
+          setActiveDay(wednesday)
+          break
+        case 4: setActiveDay(thursday)
+        case 5: setActiveDay(friday)
+      }
+    },1)
 
     setTimeout(() => {
       loader.classList.add('hidden')
