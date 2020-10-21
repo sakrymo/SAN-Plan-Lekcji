@@ -121,6 +121,10 @@
       }
     }
 
+    let clearActiveDays = () => {
+      document.querySelectorAll('.day').forEach(day => {if (day.classList.contains('active-day')) { day.classList.remove('active-day') }})
+    }
+
     setInterval(()=>{
       now = new Date();
       // console.log(now.getDay());
@@ -134,8 +138,15 @@
         case 3:
           setActiveDay(wednesday)
           break
-        case 4: setActiveDay(thursday)
-        case 5: setActiveDay(friday)
+        case 4:
+          setActiveDay(thursday)
+          break
+        case 5: 
+          setActiveDay(friday)
+          break
+        default:
+          clearActiveDays()
+          break
       }
 
       document.querySelector('#current-date').innerHTML = now.toString();
