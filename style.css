@@ -28,14 +28,15 @@ body {
   border: .3rem red solid;
   display: grid;
   grid-template-columns: 10% 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 17% 12% 1fr 1fr 1fr 1fr;
+  grid-template-rows: 17% 12% 1fr 1fr 1fr 1fr 1fr;
   grid-template-areas:
   "thead thead thead thead thead thead thead thead"
   "logo t1 t2 t3 t4 t5 t6 t7"
-  ". . . . . . . ."
-  ". . . . . . . ."
-  ". . . . . . . ."
-  ". . . . . . . ." ;
+  "pn . . . . . . ."
+  "wt . . . . . . ."
+  "sr . . . . . . ."
+  "cz . . . . . . ."
+  "pt . . . . . . ." ;
 }
 
 .timetable-header {
@@ -97,3 +98,8 @@ body {
 .t5 {grid-area: t5;}
 .t6 {grid-area: t6;}
 .t7 {grid-area: t7;}
+.pn {grid-area: pon;}
+.wt {grid-area: wt;}
+.sr {grid-area: sr;}
+.cz {grid-area: czw;}
+.pt {grid-area: pt;}
