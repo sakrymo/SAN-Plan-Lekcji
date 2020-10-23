@@ -283,6 +283,7 @@ span.white {
   font-family: droid-serif, serif;
   font-size: 1.6rem;
   font-weight: bolder;
+  max-width: 90%;
 }
 
 .subject:hover {
@@ -296,6 +297,7 @@ span.white {
   left: 1rem;
   font-family: poppins, sans-serif;
   font-size: 1.2rem;
+  max-width: 90%;
 }
 
 .teacher:hover {
@@ -313,4 +315,9 @@ span.white {
   background: var(--red) !important;
   color: white;
   border-right: var(--red) 3px solid;
+}
+
+@media screen and (max-width: 1360px) {
+  .subject {font-size: 1.4rem;}
+  .teacher {font-size: 1rem;}
 }
