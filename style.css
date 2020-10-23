@@ -94,8 +94,8 @@ a {
 }
 
 .timetable-header {
-  /* background: url('img/bg.jpg') center center/cover no-repeat; */
-  background: rgb(0, 34, 78);
+  background: url('img/bg.jpg') center center/cover no-repeat;
+  /* background: rgb(0, 34, 78); */
   text-align: center;
   grid-area: thead;
   display: flex;
