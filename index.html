@@ -89,13 +89,8 @@
     
     <div class="lesson cz1"></div>
     <div class="lesson cz2"></div>
-    <div class="lesson cz3">
-      <a href="https://teams.microsoft.com/l/team/19%3afbcb1893464645e78a495d1c92cb1cc7%40thread.tacv2/conversations?groupId=ce32b94d-e92d-456f-8783-10bbf9add9ca&tenantId=262dbaf1-38a1-43f9-a7da-3022da85cc5e" target="_blank">
-        <div class="subject">Warsztaty 2D-graf.wektorowa</div>
-      </a>
-      <div class="teacher">Wójcik, Anna</div>
-    </div>
-    <div class="lesson cz4"></div>
+    <div class="lesson cz3" l="grafika2d"></div>
+    <div class="lesson cz4" l="test"></div>
     <div class="lesson cz5"></div>
     <div class="lesson cz6"></div>
     <div class="lesson cz7"></div>
@@ -117,7 +112,8 @@
     tuesday = document.querySelector('.wt'),
     wednesday = document.querySelector('.sr'),
     thursday = document.querySelector('.cz'),
-    friday = document.querySelector('.pt');
+    friday = document.querySelector('.pt'),
+    lessons = document.querySelectorAll('.lesson');
 
     let setActiveDay = element => {
       if (!element.classList.contains('active-day')) {
@@ -132,7 +128,7 @@
 
     setInterval(()=>{
       now = new Date();
-      // console.log(now.getDay());
+
       switch (now.getDay()) {
         case 1:
           setActiveDay(monday)
@@ -156,6 +152,34 @@
 
       document.querySelector('#current-date').innerHTML = now.toString();
     },1)
+
+    lessons.forEach(l => {
+      let subject = teacher = subjectURL = teacherURL = " "
+      
+      switch (l.getAttribute('l')) {
+        case 'test':
+          subject = "INSERT TITLE HERE"
+          teacher = "NAME SURNAME"
+          subjectURL = "#"
+          teacherURL = "#"
+          break;
+        case 'grafika2d':
+          subject = "Warsztaty 2D-graf.wektorowa"
+          teacher =  "Wójcik, Anna"
+          subjectURL = "https://teams.microsoft.com/l/team/19%3afbcb1893464645e78a495d1c92cb1cc7%40thread.tacv2/conversations?groupId=ce32b94d-e92d-456f-8783-10bbf9add9ca&tenantId=262dbaf1-38a1-43f9-a7da-3022da85cc5e"
+          teacherURL = "#"
+        default:
+          break;
+      }
+
+      l.innerHTML =
+`     <a href="${subjectURL}" target="_blank">
+        <div class="subject">${subject}</div>
+      </a>
+      <a href="${teacherURL}" target="_blank">
+        <div class="teacher">${teacher}</div>
+      </a>`;
+    })
 
     setTimeout(() => {
       loader.classList.add('hidden')
