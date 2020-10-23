@@ -75,7 +75,7 @@ a {
   flex-flow: column;
   overflow: hidden;
   /* border: .5rem var(--red) solid; */
-  border: .3rem darkred solid;
+  border: .3rem var(--red) solid;
   display: grid;
   grid-template-columns: 10% 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 17% 12% 1fr 1fr 1fr 1fr 1fr;
@@ -95,8 +95,8 @@ a {
 }
 
 .timetable-header {
-  /* background: url('img/bg4.jpg') center center/cover no-repeat; */
-  background: var(--red);
+  background: url('img/bg4.jpg') center center/cover no-repeat;
+  /* background: var(--red); */
   text-align: center;
   grid-area: thead;
   display: flex;
