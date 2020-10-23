@@ -74,7 +74,7 @@ a {
   position: relative;
   flex-flow: column;
   overflow: hidden;
-  border: .3rem var(--red) solid;
+  border: .5rem var(--red) solid;
   display: grid;
   grid-template-columns: 10% 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 17% 12% 1fr 1fr 1fr 1fr 1fr;
@@ -94,7 +94,8 @@ a {
 }
 
 .timetable-header {
-  background: var(--red);
+  /* background: url('img/bg.jpg') center center/cover no-repeat; */
+  background: rgb(0, 34, 78);
   text-align: center;
   grid-area: thead;
   display: flex;
@@ -281,9 +282,10 @@ span.white {
 }
 
 .active-hour {
-  background: white;
-  color: var(--red);
-  border-bottom: var(--red) 3px solid;
+  /* background: white; */
+  /* color: var(--red); */
+  background: var(--red);
+  /* border-bottom: var(--red) 3px solid; */
 }
 
 .active-day {

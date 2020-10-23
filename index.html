@@ -14,13 +14,6 @@
   <div class="loader">
     <img id="loading-animation" src="img/loader.gif" alt="">
   </div>
-
-  <button onclick="alert('TEST')">Lorem ipsum</button>
-</br>
-  <a href="https://teams.microsoft.com/l/team/19%3afb922d119ff44a7ca9e51b0f18e083a7%40thread.tacv2/conversations?groupId=e1c7a9e5-0ef0-40ec-90cb-54c034844eef&tenantId=262dbaf1-38a1-43f9-a7da-3022da85cc5e">
-    <button>Dolor sit amet</button>
-  </a>
-  <a href="msteams://teams.microsoft.com/l/team/19%3afb922d119ff44a7ca9e51b0f18e083a7%40thread.tacv2/conversations?groupId=e1c7a9e5-0ef0-40ec-90cb-54c034844eef&tenantId=262dbaf1-38a1-43f9-a7da-3022da85cc5e" target="_blank">ABCDEFDGHIJ</a>
   <span class="white" id="current-date"></span>
 
 
@@ -115,19 +108,24 @@
     friday = document.querySelector('.pt'),
     lessons = document.querySelectorAll('.lesson');
 
+    let activeDay
+
     let setActiveDay = element => {
       if (!element.classList.contains('active-day')) {
         document.querySelectorAll('.day').forEach(day => day.classList.remove('active-day'))
         element.classList.add('active-day')
+        activeDay = element
       }
     }
 
     let clearActiveDays = () => {
-      document.querySelectorAll('.day').forEach(day => {if (day.classList.contains('active-day')) { day.classList.remove('active-day') }})
+      document.querySelectorAll('.day').forEach(day => { if (day.classList.contains('active-day')) { day.classList.remove('active-day') }})
+      activeDay = false
     }
 
-    setInterval(()=>{
+    setInterval(() => {
       now = new Date();
+      now.setHours(8)
 
       switch (now.getDay()) {
         case 1:
@@ -148,6 +146,17 @@
         default:
           clearActiveDays()
           break
+      }
+      
+      let h = now.getHours(), min = now.getMinutes();
+
+      if (activeDay) {
+        if (h == 8 || min == 9 && h < 30) {
+          document.querySelector('.t1').classList.add('active-hour')
+        } else if (h == 9 && min > 30) {
+          document.querySelector('.t2').classList.add('active-hour')
+        }
+
       }
 
       document.querySelector('#current-date').innerHTML = now.toString();
