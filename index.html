@@ -65,12 +65,12 @@
     <div class="lesson pn7"></div>
 
     <div class="lesson wt1"></div>
-    <div class="lesson wt2"></div>
-    <div class="lesson wt3"></div>
-    <div class="lesson wt4"></div>
-    <div class="lesson wt5"></div>
-    <div class="lesson wt6"></div>
-    <div class="lesson wt7"></div>
+    <div class="lesson wt2" l="liternictwo"></div>
+    <div class="lesson wt3" l="fotografia"></div>
+    <div class="lesson wt4" l="jezyk-obcy"></div>
+    <div class="lesson wt5" l="rysunek-malarstwo"></div>
+    <div class="lesson wt6" l="rysunek-malarstwo"></div>
+    <div class="lesson wt7" l="tech-inf"></div>
 
     <div class="lesson sr1"></div>
     <div class="lesson sr2"></div>
@@ -178,6 +178,37 @@
           teacher =  "Wójcik, Anna"
           subjectURL = "https://teams.microsoft.com/l/team/19%3afbcb1893464645e78a495d1c92cb1cc7%40thread.tacv2/conversations?groupId=ce32b94d-e92d-456f-8783-10bbf9add9ca&tenantId=262dbaf1-38a1-43f9-a7da-3022da85cc5e"
           teacherURL = "#"
+          break
+        case 'liternictwo':
+          subject = "Liternictwo"
+          teacher = "Tomsia, Szymon"
+          subjectURL = "#"
+          teacherURL = "#"
+          break
+        case 'fotografia':
+          subject = "Fotografia"
+          teacher = "Tomsia, Szymon"
+          subjectURL = "#"
+          teacherURL = "#"
+          break
+        case 'jezyk-obcy':
+          subject = "Jezyk obcy"
+          teacher = "???"
+          subjectURL = "#"
+          teacherURL = "#"
+          break
+        case 'rysunek-malarstwo':
+          subject = "Rysunek/Malarstwo"
+          teacher = "Sikora, Zbigniew"
+          subjectURL = "#"
+          teacherURL = "#"
+          break
+        case 'tech-inf':
+          subject = "Technologie Informacyjne Ćw"
+          teacher = "Kluka, Grzegorz"
+          subjectURL = "#"
+          teacherURL = "#"
+          break
         default:
           break;
       }
@@ -190,6 +221,44 @@
         <div class="teacher">${teacher}</div>
       </a>`;
     })
+
+    function getWeekNumber(d) {
+    // Copy date so don't modify original
+    d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+    // Set to nearest Thursday: current date + 4 - current day number
+    // Make Sunday's day number 7
+    d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay()||7));
+    // Get first day of year
+    var yearStart = new Date(Date.UTC(d.getUTCFullYear(),0,1));
+    // Calculate full weeks to nearest Thursday
+    var weekNo = Math.ceil(( ( (d - yearStart) / 86400000) + 1)/7);
+    // Return array of year and week number
+    return [d.getUTCFullYear(), weekNo];
+}
+
+  let currentWeek = getWeekNumber(new Date());
+  if (currentWeek % 2) {
+    document.querySelectorAll('*[l="rysunek-malarstwo"').forEach(e => {
+      console.log(e.firstChild)
+      e.innerHTML = 
+`     <a href="#" target="_blank">
+        <div class="subject">Rysunek</div>
+      </a>
+      <a href="#" target="_blank">
+        <div class="teacher">Sikora, Zbigniew</div>
+      </a>`;
+    })
+  } else {
+    document.querySelectorAll('*[l="rysunek-malarstwo"').forEach(e => {
+      e.innerHTML = 
+`     <a href="#" target="_blank">
+        <div class="subject">Malarstwo</div>
+      </a>
+      <a href="#" target="_blank">
+        <div class="teacher">Sikora, Zbigniew</div>
+      </a>`;
+    })
+  }
 
     setTimeout(() => {
       loader.classList.add('hidden')
