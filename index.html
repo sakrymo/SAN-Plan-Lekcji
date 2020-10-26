@@ -64,13 +64,13 @@
     <div class="lesson pn6"></div>
     <div class="lesson pn7"></div>
 
-    <div class="lesson wt1"></div>
-    <div class="lesson wt2" l="liternictwo"></div>
-    <div class="lesson wt3" l="fotografia"></div>
-    <div class="lesson wt4" l="jezyk-obcy"></div>
-    <div class="lesson wt5" l="rysunek-malarstwo"></div>
-    <div class="lesson wt6" l="rysunek-malarstwo"></div>
-    <div class="lesson wt7" l="tech-inf"></div>
+    <div class="lesson wt1" l="liternictwo"></div>
+    <div class="lesson wt2" l="fotografia"></div>
+    <div class="lesson wt3" l="jezyk-obcy"></div>
+    <div class="lesson wt4" l="rysunek"></div>
+    <div class="lesson wt5" l="malarstwo"></div>
+    <div class="lesson wt6" l="tech-inf"></div>
+    <div class="lesson wt7" l=""></div>
 
     <div class="lesson sr1"></div>
     <div class="lesson sr2"></div>
@@ -125,8 +125,9 @@
 
     setInterval(() => {
       now = new Date();
-      now.setHours(9)
-      now.setMinutes(30)
+      now.setDate(5)
+      now.setHours(11)
+      now.setMinutes(10)
 
       switch (now.getDay()) {
         case 1:
@@ -154,9 +155,9 @@
       if (activeDay) {
         if (h == 8 || min == 9 && h < 30) {
           document.querySelector('.t1').classList.add('active-hour')
-        } else if (h == 9 && min > 30) {
+        } else if (h == 9 && min > 30 || h == 10 || h == 11 && min < 15) {
           document.querySelector('.t2').classList.add('active-hour')
-        }
+        } //else if (h ==)
 
       }
 
@@ -222,19 +223,13 @@
       </a>`;
     })
 
-    function getWeekNumber(d) {
-    // Copy date so don't modify original
+  function getWeekNumber(d) {
     d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
-    // Set to nearest Thursday: current date + 4 - current day number
-    // Make Sunday's day number 7
     d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay()||7));
-    // Get first day of year
     var yearStart = new Date(Date.UTC(d.getUTCFullYear(),0,1));
-    // Calculate full weeks to nearest Thursday
     var weekNo = Math.ceil(( ( (d - yearStart) / 86400000) + 1)/7);
-    // Return array of year and week number
     return [d.getUTCFullYear(), weekNo];
-}
+  }
 
   let currentWeek = getWeekNumber(new Date());
   if (currentWeek % 2) {
