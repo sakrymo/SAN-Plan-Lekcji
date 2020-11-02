@@ -67,15 +67,15 @@
     <div class="lesson wt1" l="liternictwo"></div>
     <div class="lesson wt2" l="fotografia"></div>
     <div class="lesson wt3" l="jezyk-obcy"></div>
-    <div class="lesson wt4" l="rysunek"></div>
-    <div class="lesson wt5" l="malarstwo"></div>
+    <div class="lesson wt4" l="rysunek-malarstwo"></div>
+    <div class="lesson wt5" l="rysunek-malarstwo"></div>
     <div class="lesson wt6" l="tech-inf"></div>
     <div class="lesson wt7" l=""></div>
 
     <div class="lesson sr1"></div>
     <div class="lesson sr2"></div>
     <div class="lesson sr3"></div>
-    <div class="lesson sr4"></div>
+    <div class="lesson sr4" l="pfwidz-komwiz"></div>
     <div class="lesson sr5"></div>
     <div class="lesson sr6"></div>
     <div class="lesson sr7"></div>
@@ -108,7 +108,7 @@
     friday = document.querySelector('.pt'),
     lessons = document.querySelectorAll('.lesson');
 
-    let activeDay
+    let activeDay, dayID, h, min, tMin, timeslot, lastTimeslot;
 
     let setActiveDay = element => {
       if (!element.classList.contains('active-day')) {
@@ -121,49 +121,115 @@
     let clearActiveDays = () => {
       document.querySelectorAll('.day').forEach(day => { if (day.classList.contains('active-day')) { day.classList.remove('active-day') }})
       activeDay = false
+      dayID = null
+    }
+
+    function clearActiveTimeslots() {
+      document.querySelectorAll('.timeslot').forEach(e => {
+        e.classList.remove('active-hour')
+      })
+    }
+
+    function clearActiveLessons() {
+      lessons.forEach(e => {
+        e.classList.remove('active-lesson')
+      })
+    }
+
+    const isBetween = (x,min,max) => {
+        return x>=min && x<=max
+    }
+
+    const tRange = (now,t1,t2) => {
+      t1 = t1.split(':'); t2 = t2.split(':');
+      h1 = +t1[0]; min1 = +t1[1];
+      h2 = +t2[0]; min2 = +t2[1];
+
+      let min = h1*60+min1
+      let max = h2*60+min2
+
+      return isBetween(now,min,max)
     }
 
     setInterval(() => {
       now = new Date();
-      now.setDate(5)
-      now.setHours(11)
-      now.setMinutes(10)
+      // now.setDate(5)
+      // now.setHours(11)
+      // now.setMinutes(32)
 
+      // Determine current day
       switch (now.getDay()) {
         case 1:
           setActiveDay(monday)
+          dayID = 'pn'
           break
         case 2:
           setActiveDay(tuesday)
+          dayID = 'wt'
           break
         case 3:
           setActiveDay(wednesday)
+          dayID = 'sr'
           break
         case 4:
           setActiveDay(thursday)
+          dayID = 'cz'
           break
         case 5: 
           setActiveDay(friday)
+          dayID = 'pt'
           break
         default:
           clearActiveDays()
           break
       }
       
-      let h = now.getHours(), min = now.getMinutes();
+      h = now.getHours(),
+      min = now.getMinutes(),
+      tMin = h * 60 + min;
 
+      if (timeslot) {
+        lastTimeslot = timeslot
+      }
+
+      // Define timeslots
       if (activeDay) {
-        if (h == 8 || min == 9 && h < 30) {
-          document.querySelector('.t1').classList.add('active-hour')
-        } else if (h == 9 && min > 30 || h == 10 || h == 11 && min < 15) {
-          document.querySelector('.t2').classList.add('active-hour')
-        } //else if (h ==)
+        timeslot = 
+          tRange(tMin, '08:00','9:30')  ? 1 :
+          tRange(tMin, '9:45','11:15')  ? 2 :
+          tRange(tMin, '11:30','13:00') ? 3 :
+          tRange(tMin, '13:15','14:45') ? 4 :
+          tRange(tMin, '15:00','16:30') ? 5 :
+          tRange(tMin, '16:45','18:15') ? 6 :
+          tRange(tMin, '18:30','20:00') ? 7 :
+          null;
+      }
 
+      if (timeslot && timeslot != lastTimeslot) {
+        clearActiveTimeslots()
+        clearActiveLessons()
+      }
+      
+      // Highlight active lesson
+      if (dayID && timeslot) {
+        let activeLesson = document.querySelector(`.${dayID}${timeslot}`)
+        if (!activeLesson.classList.contains('active-lesson')) {
+          activeLesson.classList.add('active-lesson')
+        }
+      }
+
+      // Highlight active timeslot
+      if (dayID && timeslot) {
+        let activeLesson = document.querySelector(`.t${timeslot}`)
+        if (!activeLesson.classList.contains('active-hour')) {
+          activeLesson.classList.add('active-hour')
+        }
       }
 
       document.querySelector('#current-date').innerHTML = now.toString();
     },1)
 
+    // Set lessons
     lessons.forEach(l => {
       let subject = teacher = subjectURL = teacherURL = " "
       
@@ -210,6 +276,12 @@
           subjectURL = "#"
           teacherURL = "#"
           break
+        case 'pfwidz-komwiz':
+          subject = " "
+          teacher = "Piątek, Maria"
+          subjectURL = "#"
+          teacherURL = "#"
+          break
         default:
           break;
       }
@@ -222,7 +294,8 @@
         <div class="teacher">${teacher}</div>
       </a>`;
     })
-
+  
+  // Set lessons based on week number
   function getWeekNumber(d) {
     d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
     d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay()||7));
@@ -232,26 +305,33 @@
   }
 
   let currentWeek = getWeekNumber(new Date());
-  if (currentWeek % 2) {
-    document.querySelectorAll('*[l="rysunek-malarstwo"').forEach(e => {
-      console.log(e.firstChild)
-      e.innerHTML = 
-`     <a href="#" target="_blank">
-        <div class="subject">Rysunek</div>
+
+  const lessonTemplate = (element,subject,teacher,subjectURL,teacherURL) => {
+    element.innerHTML =
+`     <a href="${subjectURL}" target="_blank">
+        <div class="subject">${subject}</div>
       </a>
-      <a href="#" target="_blank">
-        <div class="teacher">Sikora, Zbigniew</div>
+      <a href="${teacherURL}" target="_blank">
+        <div class="teacher">${teacher}</div>
       </a>`;
+  }
+
+  if (currentWeek[1] % 2) {
+    document.querySelectorAll('*[l="rysunek-malarstwo"').forEach(e => {
+      lessonTemplate(e,'Malarstwo','Sikora, Zbigniew','#','#')
+    })
+    document.querySelectorAll('*[l="pfwidz-komwiz"]').forEach(e => {
+      lessonTemplate(e,'Psychofizjologia Widzenia','Piątek, Maria','#','#')
     })
   } else {
     document.querySelectorAll('*[l="rysunek-malarstwo"').forEach(e => {
-      e.innerHTML = 
-`     <a href="#" target="_blank">
-        <div class="subject">Malarstwo</div>
-      </a>
-      <a href="#" target="_blank">
-        <div class="teacher">Sikora, Zbigniew</div>
-      </a>`;
+      lessonTemplate(e,'Rysunek','Sikora, Zbigniew','#','#')
+    })
+    document.querySelectorAll('*[l="pfwidz-komwiz"]').forEach(e => {
+      lessonTemplate(e,'Podstawy Komunikacji Wizualnej','Piątek, Maria','#','#')
+    })
+    document.querySelectorAll('*[l="tech-inf"]').forEach(e => {
+      lessonTemplate(e,' ',' ',' ',' ')
     })
   }
 

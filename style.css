@@ -260,7 +260,7 @@ span.white {
 .subject {
   position: absolute;
   top: 1rem;
-  left: 1rem;
+  left: 5%;
   font-family: droid-serif, serif;
   font-size: 1.6rem;
   font-weight: bolder;
@@ -275,7 +275,7 @@ span.white {
 .teacher {
   position: absolute;
   bottom: 1rem;
-  left: 1rem;
+  left: 5%;
   font-family: poppins, sans-serif;
   font-size: 1.2rem;
   max-width: 90%;
@@ -286,17 +286,24 @@ span.white {
   cursor: pointer;
 }
 
-.active-hour {
-  /* background: white; */
-  /* color: var(--red); */
-  background: var(--red);
-  /* border-bottom: var(--red) 3px solid; */
-}
-
 .active-day {
   background: var(--red) !important;
   color: white;
   border-right: var(--red) 3px solid;
+}
+
+.active-hour {
+  background: var(--red);
+}
+
+.active-lesson {
+  background: linear-gradient(darkred,var(--red));
+  color: white;
+}
+
+.active-lesson .teacher:hover,
+.active-lesson .subject:hover {
+  background: white;
 }
 
 @media screen and (max-width: 1360px) {
