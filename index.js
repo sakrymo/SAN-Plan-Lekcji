@@ -130,56 +130,56 @@ setInterval(() => {
 
 // Set lessons
 lessons.forEach(l => {
-  let subject = teacher = subjectURL = teacherURL = " "
+  let subject = teacher = subjectURL = teacherID = " "
   
   switch (l.getAttribute('l')) {
     case 'test':
       subject = "INSERT TITLE HERE"
       teacher = "NAME SURNAME"
       subjectURL = "#"
-      teacherURL = "#"
+      teacherID = "#"
       break;
     case 'grafika2d':
       subject = "Warsztaty 2D-graf. wektorowa"
       teacher =  "Wójcik, Anna"
       subjectURL = "https://teams.microsoft.com/l/team/19%3afbcb1893464645e78a495d1c92cb1cc7%40thread.tacv2/conversations?groupId=ce32b94d-e92d-456f-8783-10bbf9add9ca&tenantId=262dbaf1-38a1-43f9-a7da-3022da85cc5e"
-      teacherURL = "#"
+      teacherID = "awojcik@san.edu.pl"
       break
     case 'liternictwo':
       subject = "Liternictwo"
       teacher = "Tomsia, Szymon"
-      subjectURL = "#"
-      teacherURL = "#"
+      subjectURL = "https://teams.microsoft.com/l/team/19%3a34f5021badc543539e05d911b67eba87%40thread.tacv2/conversations?groupId=ab0c05f0-c064-461f-91cc-231c40eef50d&tenantId=262dbaf1-38a1-43f9-a7da-3022da85cc5e"
+      teacherID = "stomsia@san.edu.pl"
       break
     case 'fotografia':
       subject = "Fotografia"
       teacher = "Tomsia, Szymon"
-      subjectURL = "#"
-      teacherURL = "#"
+      subjectURL = "https://teams.microsoft.com/l/team/19%3a572259cf45d3481d998241e4cc4f542f%40thread.tacv2/conversations?groupId=7c4caf1c-8524-490c-b5e9-10409bf6f2df&tenantId=262dbaf1-38a1-43f9-a7da-3022da85cc5e"
+      teacherID = "stomsia@san.edu.pl"
       break
     case 'jezyk-obcy':
       subject = "Jezyk obcy"
       teacher = "???"
-      subjectURL = "#"
-      teacherURL = "#"
+      subjectURL = "???"
+      teacherID = "???"
       break
     case 'rysunek-malarstwo':
       subject = "Rysunek/Malarstwo"
       teacher = "Sikora, Zbigniew"
       subjectURL = "#"
-      teacherURL = "#"
+      teacherID = "zsikora@san.edu.pl"
       break
     case 'tech-inf':
       subject = "Technologie Informacyjne Ćw"
       teacher = "Kluka, Grzegorz"
-      subjectURL = "#"
-      teacherURL = "#"
+      subjectURL = "https://teams.microsoft.com/l/team/19%3afb922d119ff44a7ca9e51b0f18e083a7%40thread.tacv2/conversations?groupId=e1c7a9e5-0ef0-40ec-90cb-54c034844eef&tenantId=262dbaf1-38a1-43f9-a7da-3022da85cc5e"
+      teacherID = "gkluka@san.edu.pl"
       break
     case 'pfwidz-komwiz':
       subject = " "
       teacher = "Piątek, Maria"
       subjectURL = "#"
-      teacherURL = "#"
+      teacherID = "mpiatek@san.edu.pl"
       break
     default:
       break;
@@ -189,7 +189,7 @@ lessons.forEach(l => {
 `     <a href="${subjectURL}" target="_blank">
     <div class="subject">${subject}</div>
   </a>
-  <a href="${teacherURL}" target="_blank">
+  <a onclick="prompt('Skopiuj i wyszukaj w Teams ten adres:', '${teacherID}');">
     <div class="teacher">${teacher}</div>
   </a>`;
 })
@@ -205,29 +205,29 @@ return [d.getUTCFullYear(), weekNo];
 
 let currentWeek = getWeekNumber(new Date());
 
-const lessonTemplate = (element,subject,teacher,subjectURL,teacherURL) => {
+const lessonTemplate = (element,subject,teacher,subjectURL,teacherID) => {
 element.innerHTML =
 `     <a href="${subjectURL}" target="_blank">
     <div class="subject">${subject}</div>
   </a>
-  <a href="${teacherURL}" target="_blank">
+  <a onclick="prompt('Skopiuj i wyszukaj w Teams ten adres:', '${teacherID}');">
     <div class="teacher">${teacher}</div>
   </a>`;
 }
 
 if (currentWeek[1] % 2) {
 document.querySelectorAll('*[l="rysunek-malarstwo"').forEach(e => {
-  lessonTemplate(e,'Malarstwo','Sikora, Zbigniew','#','#')
+  lessonTemplate(e,'Malarstwo','Sikora, Zbigniew','https://teams.microsoft.com/l/team/19%3aa25f53d0b19f4004a530f5b149cda45a%40thread.tacv2/conversations?groupId=d5edf811-8adc-49ea-b122-af5f25256404&tenantId=262dbaf1-38a1-43f9-a7da-3022da85cc5e','zsikora@san.edu.pl')
 })
 document.querySelectorAll('*[l="pfwidz-komwiz"]').forEach(e => {
-  lessonTemplate(e,'Psychofizjologia Widzenia','Piątek, Maria','#','#')
+  lessonTemplate(e,'Psychofizjologia Widzenia','Piątek, Maria','https://teams.microsoft.com/l/team/19%3af6a7ca2747ce414eaefc1d0358d2e17d%40thread.tacv2/conversations?groupId=a43a8368-0dde-40fb-8037-1b57617a2864&tenantId=262dbaf1-38a1-43f9-a7da-3022da85cc5e','mpiatek@san.edu.pl')
 })
 } else {
 document.querySelectorAll('*[l="rysunek-malarstwo"').forEach(e => {
-  lessonTemplate(e,'Rysunek','Sikora, Zbigniew','#','#')
+  lessonTemplate(e,'Rysunek','Sikora, Zbigniew','https://teams.microsoft.com/l/team/19%3a3dd5f7ef5c994026a7085969de65bce6%40thread.tacv2/conversations?groupId=90e76167-2b2f-45bc-84c5-06268111cb6f&tenantId=262dbaf1-38a1-43f9-a7da-3022da85cc5e','zsikora@san.edu.pl')
 })
 document.querySelectorAll('*[l="pfwidz-komwiz"]').forEach(e => {
-  lessonTemplate(e,'Podstawy Komunikacji Wizualnej','Piątek, Maria','#','#')
+  lessonTemplate(e,'Podstawy Komunikacji Wizualnej','Piątek, Maria','#','mpiatek@san.edu.pl')
 })
 document.querySelectorAll('*[l="tech-inf"]').forEach(e => {
   lessonTemplate(e,' ',' ',' ',' ')
