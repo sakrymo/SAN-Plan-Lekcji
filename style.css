@@ -297,7 +297,7 @@ span.white {
 }
 
 .active-lesson {
-  background: linear-gradient(darkred,var(--red));
+  background: linear-gradient(135deg,darkred,var(--red));
   color: white;
 }
 
