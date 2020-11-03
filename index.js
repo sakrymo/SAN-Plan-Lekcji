@@ -227,7 +227,7 @@ document.querySelectorAll('*[l="rysunek-malarstwo"').forEach(e => {
   lessonTemplate(e,'Rysunek','Sikora, Zbigniew','https://teams.microsoft.com/l/team/19%3a3dd5f7ef5c994026a7085969de65bce6%40thread.tacv2/conversations?groupId=90e76167-2b2f-45bc-84c5-06268111cb6f&tenantId=262dbaf1-38a1-43f9-a7da-3022da85cc5e','zsikora@san.edu.pl')
 })
 document.querySelectorAll('*[l="pfwidz-komwiz"]').forEach(e => {
-  lessonTemplate(e,'Podstawy Komunikacji Wizualnej','Piątek, Maria','#','mpiatek@san.edu.pl')
+  lessonTemplate(e,'Podstawy Komunikacji Wizualnej','Piątek, Maria','https://teams.microsoft.com/l/team/19%3af6a7ca2747ce414eaefc1d0358d2e17d%40thread.tacv2/conversations?groupId=a43a8368-0dde-40fb-8037-1b57617a2864&tenantId=262dbaf1-38a1-43f9-a7da-3022da85cc5e','mpiatek@san.edu.pl')
 })
 document.querySelectorAll('*[l="tech-inf"]').forEach(e => {
   lessonTemplate(e,' ',' ',' ',' ')
