@@ -232,6 +232,9 @@ document.querySelectorAll('*[l="pfwidz-komwiz"]').forEach(e => {
 document.querySelectorAll('*[l="tech-inf"]').forEach(e => {
   lessonTemplate(e,' ',' ',' ',' ')
 })
+document.querySelectorAll('*[l="jezyk-obcy"]').forEach(e => {
+  lessonTemplate(e,' ', ' ', ' ', '')
+})
 }
 
 setTimeout(() => {
